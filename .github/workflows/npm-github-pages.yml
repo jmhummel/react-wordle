@@ -57,7 +57,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: artifact
-        path: github-pages.tar
+        path: "$RUNNER_TEMP/github-pages.tar"
   
   deploy:
     needs: build
