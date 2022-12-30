@@ -36,6 +36,11 @@ jobs:
       run: |
         npm ci
         npm run build
+    - name: Archive production artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: react-build
+        path: build
   
   deploy:
     needs: build
@@ -44,6 +49,10 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
+      - name: Download production build
+        uses: actions/download-artifact@v3
+        with:
+          name: react-build
       - name: Checkout
         uses: actions/checkout@v3
       - name: Setup Pages
