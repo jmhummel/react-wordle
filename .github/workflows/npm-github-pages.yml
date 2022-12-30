@@ -47,7 +47,7 @@ jobs:
         tar \
           --dereference --hard-dereference \
           --directory "$INPUT_PATH" \
-          -cvf "$RUNNER_TEMP/github-pages.tar" \
+          -cvf github-pages.tar" \
           --exclude=.git \
           --exclude=.github \
           .
@@ -57,7 +57,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: artifact
-        path: "$RUNNER_TEMP/github-pages.tar"
+        path: github-pages.tar
   
   deploy:
     needs: build
