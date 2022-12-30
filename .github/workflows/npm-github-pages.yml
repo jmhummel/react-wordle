@@ -47,7 +47,7 @@ jobs:
         tar \
           --dereference --hard-dereference \
           --directory "$INPUT_PATH" \
-          -cvf github-pages.tar" \
+          -cvf github-pages.tar \
           --exclude=.git \
           --exclude=.github \
           .
