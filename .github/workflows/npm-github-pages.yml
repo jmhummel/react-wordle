@@ -85,6 +85,7 @@ jobs:
         with:
           # Upload build folder
           path: build
+          retention-days: 1
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
