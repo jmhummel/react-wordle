@@ -56,7 +56,7 @@ jobs:
     - name: Archive production artifacts
       uses: actions/upload-artifact@v3
       with:
-        name: github-pages
+        name: artifact
         path: build
   
   deploy:
@@ -68,11 +68,11 @@ jobs:
     steps:
 #      - name: Checkout
 #        uses: actions/checkout@v3
-#      - name: Download production build
-#        uses: actions/download-artifact@v3
-#        with:
-#          name: artifact
-#          path: build
+      - name: Download production build
+        uses: actions/download-artifact@v3
+        with:
+          name: artifact
+          path: build
       - name: Setup Pages
         uses: actions/configure-pages@v2
 #      - name: Archive artifact
@@ -80,12 +80,12 @@ jobs:
 #        if: runner.os == 'Linux'
 #        run: |
 #          ls
-#      - name: Upload artifact
-#        uses: actions/upload-pages-artifact@v1
-#        with:
-#          # Upload build folder
-#          path: build
-#          retention-days: 1
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          # Upload build folder
+          path: build/artifact.tar
+          retention-days: 1
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
